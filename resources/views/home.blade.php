@@ -23,8 +23,8 @@
     </div>
 
     <div class="auth">
-        <a href="{{ url('/signIn') }}">Sign In</a>
-        <a href="{{ url('/signUp') }}">Sign Up</a>
+        <a href="{{ url('/login') }}">Sign In</a>
+        <a href="{{ url('/signup') }}">Sign Up</a>
     </div>
 </div>
 
