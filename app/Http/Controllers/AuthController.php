@@ -44,8 +44,12 @@ class AuthController extends Controller
         ]);
 
         $data['password'] = bcrypt($data['password']);
-        User::create($data);
+        $user = User::create($data);
 
-        return redirect()->route('login')->with('success', 'Account created! Please log in.');
+        // Optionally log the user in immediately
+        Auth::login($user);
+
+        return redirect()->route('home')->with('success', 'Account created and logged in!');
     }
+
 }
