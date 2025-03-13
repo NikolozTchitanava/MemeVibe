@@ -8,5 +8,7 @@
 <body>
 <h1>{{ $title }}</h1>
 <p>{{ $message }}</p>
+<!-- added AI generated logo-->
+<img src="{{ asset('images/Memevibe_logo.jpg') }}" alt="Memevibe Logo" style="max-width: 300px;">
 </body>
 </html>
