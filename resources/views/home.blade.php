@@ -24,7 +24,7 @@
             align-items: center; /* Center items vertically */
         }
         .navbar img {
-            max-height: 40px; /* Adjust logo size in navbar */
+            max-height: 60px; /* Adjust logo size in navbar */
             margin-right: 20px; /* Space between logo and links */
         }
         .navbar a {
@@ -94,7 +94,7 @@
 <body>
 <!-- Navigation Bar (Top) -->
 <div class="navbar">
-    <img src="{{ asset('images/Memevibe_logo.jpg') }}" alt="Memevibe Logo">
+    <a href="{{ url('/') }}"><img src="{{ asset('images/Memevibe_logo.jpg') }}" alt="Memevibe Logo"></a>
     <a href="{{ url('/') }}">Home</a>
 </div>
 
