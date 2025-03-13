@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         $data = [
             'title' => 'Welcome to Memeviibe',
-            'message' => 'This is the initial  home page of Memeviibe!',
+            'message' => 'This is the initial home page of Memeviibe!',
         ];
 
         return view('home', $data);
