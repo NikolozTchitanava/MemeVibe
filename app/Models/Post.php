@@ -10,18 +10,21 @@ class Post extends Model
 {
     use HasFactory;
 
-    // Disable automatic timestamps management (set to true if you want Eloquent to handle them)
-    public $timestamps = false;
+    // Option 1: Enable timestamps and let Laravel manage created_at
+    public $timestamps = true;
+
+    // If you only want created_at (not updated_at), comment out the above and use:
+    // protected $dates = ['created_at'];
 
     // The attributes that are mass assignable.
     protected $fillable = [
         'title',
-        'image',     // Field to store the image or GIF path
+        'image',
         'user_id',
         'created_at',
     ];
 
-    // Relationship with the User model.
+    // Relationship with the User model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -35,8 +35,8 @@
 
         <!-- Username Field -->
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Username" value="{{ old('username') }}" required>
+            <label for="username" class="label-white">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" value="{{ old('username') }}" required class="input-white">
             @error('username')
             <span class="error">{{ $message }}</span>
             @enderror
@@ -44,8 +44,8 @@
 
         <!-- Email Field -->
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email" value="{{ old('email') }}" required>
+            <label for="email" class="label-white">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" value="{{ old('email') }}" required class="input-white">
             @error('email')
             <span class="error">{{ $message }}</span>
             @enderror
@@ -53,8 +53,9 @@
 
         <!-- Password Field -->
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Password" required>
+            <label for="password" class="label-white">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password" required class="input-white">
+            <p class="password-hint">Password must be at least 8 characters long.</p>
             @error('password')
             <span class="error">{{ $message }}</span>
             @enderror
@@ -62,8 +63,8 @@
 
         <!-- Password Confirmation Field -->
         <div class="form-group">
-            <label for="password_confirmation">Confirm Password</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required>
+            <label for="password_confirmation" class="label-white">Confirm Password</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required class="input-white">
             @error('password_confirmation')
             <span class="error">{{ $message }}</span>
             @enderror
