@@ -11,9 +11,9 @@ class Post extends Model
     use HasFactory;
 
     // Disable automatic timestamps
-    public $timestamps = false;
 
-    // The attributes that are mass assignable
+
+    public $timestamps = true;
     protected $fillable = [
         'title',
         'image',

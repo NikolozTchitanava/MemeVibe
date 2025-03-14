@@ -1,0 +1,177 @@
+/* Global reset and base styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Body layout and background */
+body {
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 100px; /* Offset for fixed navbar */
+}
+
+/* Navbar (reused from home.css) */
+.navbar {
+    background-color: #1e1e1e;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.navbar img {
+    max-height: 55px;
+}
+
+.nav-center {
+    flex: 1;
+    text-align: center;
+    margin-left: 70px;
+}
+
+.nav-center a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.auth {
+    display: flex;
+    gap: 10px;
+}
+
+.auth a:first-child {
+    background-color: #0284C7;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.auth a:last-child {
+    border: 2px solid #0284C7;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Posts container */
+.posts-container {
+    width: 500px;
+    background: #1e1e1e; /* Dark background for consistency */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    color: white; /* Text color for dark background */
+}
+
+.posts-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Posts list */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-item {
+    background: #2a2a2a; /* Slightly lighter than container */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.post-item h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.post-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.post-item p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Create new post button */
+.btn-primary {
+    background-color: #0284C7;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #026aa7;
+}
+
+/* Responsive styles for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .posts-container {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+/* Responsive styles for phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .posts-container {
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+    }
+
+    .posts-container h1 {
+        font-size: 20px;
+    }
+
+    .post-item h2 {
+        font-size: 16px;
+    }
+
+    .post-item p {
+        font-size: 12px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

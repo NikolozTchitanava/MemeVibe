@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('/posts/my-posts', [PostController::class, 'myPosts'])->name('posts.my');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

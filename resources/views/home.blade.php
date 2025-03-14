@@ -18,8 +18,8 @@
 
     <div class="nav-center">
         <a href="{{ url('/') }}">Home</a>
-        <a href="{{ url('/') }}">Second</a>
-        <a href="{{ url('/') }}">Third</a>
+        <a href="{{ url('/posts/create') }}">Create Meme</a>
+        <a href="{{ url('/posts/my-posts') }}">View my posts</a>
     </div>
 
     <div class="auth">

@@ -17,13 +17,11 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Handle the image upload
         $imagePath = $request->file('image')->store('posts', 'public');
 
-        // Create the post
         Post::create([
             'title' => $request->title,
             'image' => $imagePath,
@@ -31,5 +29,14 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('posts.create')->with('success', 'Post created successfully!');
+    }
+
+    public function myPosts()
+    {
+        // Fetch posts where user_id matches the authenticated user's ID
+        $posts = Post::where('user_id', Auth::id())->get();
+
+        // Pass the posts to a view
+        return view('posts.my-posts', compact('posts'));
     }
 }
