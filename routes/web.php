@@ -25,3 +25,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::delete('/admin/posts/{post}', [AdminController::class, 'destroy'])->name('admin.posts.destroy');
 });
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
