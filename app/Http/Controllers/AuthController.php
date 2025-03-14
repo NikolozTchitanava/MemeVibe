@@ -41,22 +41,33 @@ class AuthController extends Controller
     public function signup(Request $request): RedirectResponse
     {
         try {
+            // Validate the request data
             $data = $request->validate([
                 'username' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:8',
+                'password' => 'required|min:8|confirmed', // Add confirmed rule to require password_confirmation
             ]);
 
+            // Hash the password
             $data['password'] = bcrypt($data['password']);
-            $data['created_at'] = now(); // Explicitly set created_at
+
+            // Explicitly set is_admin to false for new users
+            $data['is_admin'] = false;
+
+            // Create the user (Laravel will automatically set created_at and updated_at)
             $user = User::create($data);
 
+            // Log the user in
             Auth::login($user);
 
-            return redirect()->route('home')->with('success', 'Account created and logged in!');
+            // Redirect to the home route with a success message
+            return redirect()->route('home')->with('success', 'Account created and logged in successfully!');
         } catch (\Exception $e) {
+            // Log the detailed error for debugging
             Log::error('Signup failed: ' . $e->getMessage());
-            return back()->withErrors(['error' => 'An error occurred during registration: ' . $e->getMessage()]);
+
+            // Return a generic error message to the user
+            return back()->withErrors(['error' => 'An error occurred during registration. Please try again.']);
         }
     }
 }
