@@ -1,0 +1,235 @@
+/* Global reset and base styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Body layout and background */
+body {
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 100px; /* Offset for fixed navbar */
+}
+
+/* Fixed navbar (reused from home.css) */
+.navbar {
+    background-color: #1e1e1e;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.navbar img {
+    max-height: 55px;
+}
+
+.nav-center {
+    flex: 1;
+    text-align: center;
+    margin-left: 70px;
+}
+
+.nav-center a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.auth {
+    display: flex;
+    gap: 10px;
+}
+
+.auth a:first-child {
+    background-color: #0284C7;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.auth a:last-child {
+    border: 2px solid #0284C7;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Create post container */
+.create-post-container {
+    width: 500px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Form heading - Changed to white */
+.create-post-container h1 {
+    color: white; /* Updated to white */
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.form-group label {
+    display: block;
+    color: #333; /* Reverted to original color since only h1 is changing */
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Input fields */
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* File input specific styling */
+.form-group input[type="file"] {
+    padding: 8px; /* Adjusted for file input */
+}
+
+/* Small text below file input */
+.form-text {
+    color: #666;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Submit button */
+.btn-primary {
+    background-color: #0284C7;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #026aa7;
+}
+
+/* Success message */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Error message */
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.alert-danger ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Responsive styles for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .create-post-container {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .navbar img {
+        max-height: 40px;
+    }
+
+    .nav-center a {
+        font-size: 18px;
+    }
+
+    .auth {
+        gap: 5px;
+    }
+}
+
+/* Responsive styles for phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .create-post-container {
+        width: 95%;
+        max-width: 350px;
+        padding: 15px;
+    }
+
+    .navbar {
+        padding: 5px;
+    }
+
+    .navbar img {
+        max-height: 35px;
+    }
+
+    .nav-center a {
+        font-size: 16px;
+    }
+
+    .auth a {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="file"] {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .create-post-container h1 {
+        font-size: 20px;
+    }
+}

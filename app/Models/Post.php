@@ -10,18 +10,15 @@ class Post extends Model
 {
     use HasFactory;
 
-    // Option 1: Enable timestamps and let Laravel manage created_at
-    public $timestamps = true;
+    // Disable automatic timestamps
+    public $timestamps = false;
 
-    // If you only want created_at (not updated_at), comment out the above and use:
-    // protected $dates = ['created_at'];
-
-    // The attributes that are mass assignable.
+    // The attributes that are mass assignable
     protected $fillable = [
         'title',
         'image',
         'user_id',
-        'created_at',
+        'created_at', // Include created_at since you'll manage it manually
     ];
 
     // Relationship with the User model

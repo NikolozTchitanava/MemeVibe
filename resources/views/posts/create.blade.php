@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Create Post</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> <!-- Assuming you're using Laravel's default CSS -->
+    <link href="{{ asset('css/create-post.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container">

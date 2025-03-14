@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-
 class AuthController extends Controller
 {
     public function showLoginForm(): View
