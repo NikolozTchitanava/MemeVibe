@@ -14,11 +14,15 @@ return new class extends Migration
         // Create the users table
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->nullable();
-            $table->string('email')->nullable();
-            $table->string('password')->nullable();
-            $table->timestamp('created_at')->useCurrent();
+            $table->string('username'); // or 'username' if you prefer
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+            $table->boolean('is_admin')->default(0);
+
         });
+
 
         // Create the password_reset_tokens table for password resets
         Schema::create('password_reset_tokens', function (Blueprint $table) {

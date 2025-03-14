@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('meme');
-            $table->unsignedBigInteger('user_id');
-            $table->string('status')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->float('rating')->default(0.0);
-            $table->string('keywords')->nullable();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // Changed from 'content' to 'image' to store image or GIF path/URL.
+            $table->string('image');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->timestamp('created_at')->useCurrent(); // Only created_at
         });
     }
 
@@ -32,4 +28,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('posts');
     }
-};
+}

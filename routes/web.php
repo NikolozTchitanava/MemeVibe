@@ -11,3 +11,5 @@ Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup')
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::delete('/admin/posts/{post}', [AdminController::class, 'destroy'])->name('admin.posts.destroy');

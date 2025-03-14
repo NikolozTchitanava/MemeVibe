@@ -42,13 +42,12 @@ class AuthController extends Controller
     {
         try {
             $data = $request->validate([
-                'username' => 'required|string|max:255',
+                'username' => 'required|string|max:255', // Use username instead of name
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|min:8',
             ]);
 
             $data['password'] = bcrypt($data['password']);
-            $data['created_at'] = now(); // Explicitly set created_at
             $user = User::create($data);
 
             Auth::login($user);
