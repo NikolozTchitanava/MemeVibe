@@ -3,58 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-class AuthController extends Controller
+use Illuminate\Http\RedirectResponse;
+
+class AdminController extends Controller
 {
-    public function showLoginForm(): View
+    /**
+     * Display the admin panel with all posts.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(): View
     {
-        return view('auth.login');
+        // Fetch all posts with their associated users
+        $posts = Post::with('user')->get();
+        $totalPosts = $posts->count();
+
+        return view('admin.index', compact('posts', 'totalPosts'));
     }
 
-    public function login(Request $request): RedirectResponse
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
-    }
-
-    public function showSignupForm(): View
-    {
-        return view('auth.signup');
-    }
-
-    public function signup(Request $request): RedirectResponse
+    /**
+     * Delete a specific post.
+     *
+     * @param \App\Models\Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Post $post): RedirectResponse
     {
         try {
-            $data = $request->validate([
-                'username' => 'required|string|max:255', // Use username instead of name
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:8',
-            ]);
-
-            $data['password'] = bcrypt($data['password']);
-            $user = User::create($data);
-
-            Auth::login($user);
-
-            return redirect()->route('home')->with('success', 'Account created and logged in!');
+            $post->delete();
+            return redirect()->route('admin.index')->with('success', 'Post deleted successfully!');
         } catch (\Exception $e) {
-            Log::error('Signup failed: ' . $e->getMessage());
-            return back()->withErrors(['error' => 'An error occurred during registration: ' . $e->getMessage()]);
+            Log::error('Post deletion failed: ' . $e->getMessage());
+            return back()->withErrors(['error' => 'Failed to delete the post.']);
         }
     }
 }

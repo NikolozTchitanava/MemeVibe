@@ -37,7 +37,11 @@ class AuthController extends Controller
     {
         return view('auth.signup');
     }
-
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/');
+    }
     public function signup(Request $request): RedirectResponse
     {
         try {
