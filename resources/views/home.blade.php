@@ -11,27 +11,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <!-- Navigation Bar -->
 <div class="navbar">
     <a href="{{ url('/') }}"><img src="{{ asset('images/Memevibe_logo.jpg') }}" alt="Memevibe Logo"></a>
 
     <div class="nav-center">
         <a href="{{ url('/') }}">Home</a>
-        <a href="{{ url('/posts/create') }}">Create Meme</a>
-        <a href="{{ url('/posts/my-posts') }}">View my posts</a>
+        <a href="{{ route('posts.create') }}">Create Meme</a>
+        <a href="{{ route('posts.my') }}">View my posts</a>
     </div>
 
     <div class="auth">
-        <a href="{{ url('/login') }}">Sign In</a>
-        <a href="{{ url('/signup') }}">Sign Up</a>
+        @auth
+            <a href="{{ url('/logout') }}"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @else
+            <a href="{{ url('/login') }}">Sign In</a>
+            <a href="{{ url('/signup') }}">Sign Up</a>
+        @endauth
     </div>
 </div>
 
 <!-- Main Content -->
 <div class="content">
     <div class="meme-container">
-        <img src="{{ asset('images/Memevibe_logo.jpg') }}" alt="Funny Meme" class="meme-img">
+        @if ($randomPost)
+            <img src="{{ asset('storage/' . $randomPost->image) }}" alt="{{ $randomPost->title }}" class="meme-img">
+        @else
+            <p>No memes available yet.</p>
+        @endif
         <div class="buttons">
             <button class="dislike-btn"><i class="fas fa-times"></i></button>
             <button class="like-btn"><i class="fas fa-heart"></i></button>
